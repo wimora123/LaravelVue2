@@ -5,6 +5,7 @@
                 <div>
                     <!-- Ada nilai? Ini sudah diwakili props -->
                     <section v-if="id">
+                        <img v-if="detailUser.photo" :src="'/images/'+detailUser.photo" width="100">
                         <!-- Untuk tangkap nama dengan $router.params.name -->
                         <h1>Hello, {{ detailUser.name }}</h1>
                         <h3>Email: <strong>{{ detailUser.email }}</strong></h3>

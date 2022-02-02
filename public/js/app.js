@@ -2050,6 +2050,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // Nama url parameter untuk ketersediaan data props
   props: ['id'],
@@ -2197,18 +2198,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
     return {
-      previewImage: null
+      previewImage: null,
+      photo: null
     };
   },
   methods: {
     upload: function upload(e) {
       var files = e.target.files[0];
       this.previewImage = URL.createObjectURL(files);
-      console.info(files);
+      this.photo = files;
+    },
+    submit: function submit() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append('photo', this.photo);
+      axios.post('/api/users/photo/' + this.id, formData).then(function (response) {
+        if (response.data.status) {
+          _this.$noty.success(response.data.message);
+
+          _this.$router.push({
+            // Di name profilenya punya props id
+            name: 'Profile',
+            params: {
+              id: _this.id
+            }
+          });
+        }
+      });
     }
   }
 });
@@ -21077,6 +21099,15 @@ var render = function () {
             ? _c(
                 "section",
                 [
+                  _vm.detailUser.photo
+                    ? _c("img", {
+                        attrs: {
+                          src: "/images/" + _vm.detailUser.photo,
+                          width: "100",
+                        },
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c("h1", [_vm._v("Hello, " + _vm._s(_vm.detailUser.name))]),
                   _vm._v(" "),
                   _c("h3", [
@@ -21309,7 +21340,7 @@ var render = function () {
   return _c("div", [
     _c("h3", { staticClass: "text-center" }, [_vm._v("Upload Image")]),
     _vm._v(" "),
-    _c("img", { attrs: { src: _vm.previewImage } }),
+    _c("img", { attrs: { src: _vm.previewImage, width: "100" } }),
     _vm._v(" "),
     _c("div", { staticClass: "input-group" }, [
       _c("input", {
@@ -21318,7 +21349,11 @@ var render = function () {
       }),
     ]),
     _vm._v(" "),
-    _c("button", { staticClass: "btn btn-info mt-2" }, [_vm._v("Upload")]),
+    _c(
+      "button",
+      { staticClass: "btn btn-info mt-2", on: { click: _vm.submit } },
+      [_vm._v("Upload")]
+    ),
   ])
 }
 var staticRenderFns = []

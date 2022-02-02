@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::post('/users', [AuthController::class, 'store']);
 Route::delete('/users/{id}', [AuthController::class, 'destroy']);
 
 Route::put('/users/{id}', [AuthController::class, 'update']);
+
+// UserController
+Route::post('/users/photo/{id}', [UserController::class, 'upload']);
 

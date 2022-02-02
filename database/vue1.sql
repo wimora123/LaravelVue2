@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2022 at 03:26 PM
+-- Generation Time: Feb 02, 2022 at 07:11 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -95,7 +95,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'Otha Cartwright', 'xwindler@hotmail.com', NULL, '$2y$10$ts6N9vIdv7eej5NRCXv1eeUaqPLnIjaxC81NOlrJ5B4tmnOrQ8zNO', NULL, NULL, NULL),
 (3, 'Lowell Durgan', 'npowlowski@stanton.org', NULL, '$2y$10$8DQiHob8mKh/aIEq/JOOp.c5FLXQfNrlKmhcKGxTM3BCKNrLEa6GK', NULL, NULL, NULL),
 (4, 'Adrian Grant', 'ssanford@yahoo.com', NULL, '$2y$10$e41GYck2VwvcmYe6srEsU.K9pKoipJX2h7BJvElde4WMXKJT1zcp.', NULL, NULL, NULL),
-(5, 'Linda Gutkowski', 'mertz.tamara@hotmail.com', NULL, '$2y$10$uTMZ8HvtgvG1TtV82kNICeyBJcF.UMECzpICRRUOAK7Dq39ZGZsT6', NULL, NULL, NULL);
+(5, 'Linda Gutkowski', 'mertz.tamara@hotmail.com', NULL, '$2y$10$uTMZ8HvtgvG1TtV82kNICeyBJcF.UMECzpICRRUOAK7Dq39ZGZsT6', NULL, NULL, NULL),
+(14, 'Meidy meddy', 'meiddy@yahoo.com', NULL, '$2y$10$ERBWyCbT2H4X4yrHLwoV6.PPW6CX0xK3wguJhHPQImMf10mHRevma', NULL, '2022-01-31 08:20:43', '2022-01-31 08:20:43'),
+(15, 'Dewi Ernst', 'dewiernst@gmail.com', NULL, '$2y$10$9PoGwHKK9OPiQt/qgxkDZ.Z530CMstMPLR3TavQmN/BdslyxH8QX6', NULL, '2022-01-31 08:24:28', '2022-02-01 04:36:18');
 
 --
 -- Indexes for dumped tables
@@ -146,7 +148,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
