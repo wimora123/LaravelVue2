@@ -7,6 +7,11 @@
 require('./bootstrap');
 
 import Vue from 'vue';
+import VueNoty from 'vuejs-noty';
+
+Vue.use(VueNoty);
+
+import 'vuejs-noty/dist/vuejs-noty.css';
 
 // Panggil router
 import router from './router/index.js';

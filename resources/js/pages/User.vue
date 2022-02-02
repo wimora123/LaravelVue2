@@ -3,15 +3,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div>
-                    <!-- Ada nilai? Ini sudah diwakili props -->
-                    <section v-if="username">
-                        <!-- Untuk tangkap nama dengan $router.params.name -->
-                        <h1>Hello, {{ username }}</h1>
-                        <router-link :to="{name:'User'}">Back</router-link>
-                    </section>
                     <!-- Gak cocok? Perlihatkan semua usernya -->
-                    <section v-else>
+                    <section>
                         <h1>Daftar nama</h1>
+                        <router-link class="btn btn-info mb-2" to="/user/create">Register</router-link>
                         <ul>
                             <li v-for="user in users">
                                 <!-- Mirip function parameter di profile_url(user.name) -->
@@ -19,7 +14,7 @@
                               <!-- <router-link :to="profile_url(user.name)">{{user.name}}</router-link> -->
 
                               <!-- Coba pakai router push -->
-                              <a href="" @click="lihatUser(user.name)">{{ user.name }}</a>
+                              <a href="" @click.prevent="lihatUser(user.id)">{{ user.name }}</a>
                             </li>
                         </ul>
                     </section>
@@ -32,7 +27,6 @@
 <script>
 export default{
     // Nama url parameter untuk ketersediaan data props
-   props: ['username'],
    data(){
        return {
            users:[
@@ -44,23 +38,26 @@ export default{
    },
     // Axios untuk API
     mounted(){
-        axios
-        .get('/api/users')
-        .then((response)=>{
+        this.getUsers();
+    },
+    methods:{
+        getUsers(){
+            axios
+            .get('/api/users')
+            .then((response)=>{
             this.users = response.data;
             console.info(response);
         })
-    },
-    methods:{
+       },
        profile_url(name){
            return '/user/'+name.toLowerCase()
        },
-    //    Push router
-       lihatUser(name){
+        // Push router
+       lihatUser(id){
         //   router.push('/user/'+name.toLowerCase());
         this.$router.push({
-            name:'User',
-            params: {username:name}
+            name:'Profile',
+            params: {id}
         })
        }
    }

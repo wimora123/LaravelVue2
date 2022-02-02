@@ -16,6 +16,10 @@ const about = require('../pages/About.vue').default;
 // const notFound = require('./pages/notFound').default;
 import notFound from '../pages/notFound.vue';
 import user from '../pages/User.vue';
+import profile from '../pages/Profile.vue';
+import register from '../pages/Register.vue';
+import editUser from '../pages/Edit.vue';
+import uploadPhoto from '../pages/UploadFoto.vue';
 
 const routes =[
 	{
@@ -32,8 +36,30 @@ const routes =[
         // Tampilkan daftar user dari segi nama. Tapi jangan lupa atur di router juga
         // Tanda tanya di path untuk render daftar user atau profile pribadi
 		name:'User',
-        path:'/user/:username?',
+        path:'/user',
         component: user,
+    },
+	{
+		name:'Register',
+		path:'/user/create',
+		component:register
+	},
+	{
+		name:'Profile',
+        path:'/user/:id',
+        component: profile,
+		props:true
+    },
+	{
+		name:'Upload',
+        path:'/user/:id/photo',
+        component: uploadPhoto,
+		props:true
+    },
+	{
+		name:'Edit',
+        path:'/user/:id/edit',
+        component: editUser,
 		props:true
     },
 	{

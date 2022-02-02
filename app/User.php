@@ -15,9 +15,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    //  Isi di sini untuk kasih tahu data mana yang boleh diisi, selebihnya otomatis
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    //  Dilarang isi disini dengan metode protected $guarded
+    // protected $guarded = [
+    //     'name', 'email', 'password',
+    // ];
 
     /**
      * The attributes that should be hidden for arrays.

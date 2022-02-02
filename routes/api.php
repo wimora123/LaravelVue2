@@ -21,3 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/users', [AuthController::class, 'index']);
+
+Route::get('/users/{id}', [AuthController::class, 'show']);
+
+Route::post('/users', [AuthController::class, 'store']);
+
+Route::delete('/users/{id}', [AuthController::class, 'destroy']);
+
+Route::put('/users/{id}', [AuthController::class, 'update']);
+
